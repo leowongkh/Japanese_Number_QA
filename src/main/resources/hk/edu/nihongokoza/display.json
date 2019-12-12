@@ -1,0 +1,75 @@
+{
+  "zh": {
+    "common": {
+      "correct": {
+        "symbol": "✔",
+        "pop_up": {
+          "title": "正確",
+          "content_text": "答案正確！",
+          "content_after_text": ""
+        }
+      },
+      "incorrect": {
+        "symbol": "✘",
+        "pop_up": {
+          "title": "錯誤",
+          "content_text": "答案錯誤！正確答案為",
+          "content_after_text": ""
+        }
+      },
+      "punctuation": {
+        "quotation": {
+          "open": "「",
+          "close": "」"
+        },
+        "end_of_sentence": "。"
+      },
+      "csv": "CSV檔",
+      "file_save_title": "儲存檔案"
+    },
+    "answer_history": {
+      "title": "答題記錄",
+      "correctSymbolRep": "correctSymbol",
+      "correctHint": "* 你的答案如果正確會以「'correctSymbol'」表示。",
+      "correctRate": "正確率：",
+      "difficulty": "難度",
+      "question": "問題",
+      "question_type": "問題要求",
+      "correct_answer": "正確答案",
+      "your_answer": "你的答案",
+      "export_to_csv": "匯出至CSV",
+      "return": "返回"
+    },
+    "main_menu": {
+      "title": "TITLE",
+      "startGame": "開始",
+      "answerHistory": "答題記錄",
+      "exit": "離開"
+    },
+    "difficulty_select": {
+      "title": "難度選擇",
+      "number_range": "數字範圍：",
+      "number_range_to": "至",
+      "start": "開始！",
+      "return": "返回",
+      "difficulty_prompt": "難度"
+    },
+    "in_game": {
+      "types": {
+        "kanji": "漢字",
+        "hiragana": "平假名",
+        "number": "數字"
+      },
+      "pre_question_type_display": "請為下列",
+      "post_question_type_display": "",
+      "pre_answer_type_display": "輸入",
+      "post_answer_type_display": "",
+      "input_text_field_prompt_text": "你的答案",
+      "submit": "確定",
+      "next_question": "下一題",
+      "return": "返回主頁"
+    }
+  },
+  "en": {
+  }
+}
