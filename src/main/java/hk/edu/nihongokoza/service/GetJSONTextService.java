@@ -31,6 +31,9 @@ public class GetJSONTextService {
     public String getJSONTextValue(final String sceneName, final String... jsonKeys) {
         try {
             var jsonNode = jsonService.getJSONNode(sceneName);
+            if (jsonNode == null){
+                throw new NullPointerException("JSON for Scene Name: \""+ sceneName + "\" is null");
+            }
             for (var jsonKey : jsonKeys) {
                 if (jsonNode.isTextual()) {
                     return jsonNode.textValue();
@@ -40,8 +43,11 @@ public class GetJSONTextService {
                     return jsonNode.textValue();
                 }
             }
-            var errorMessageBuilder = new StringBuilder("Value not found for key: ")
-                    .append(sceneName);
+            var errorMessageBuilder = new StringBuilder("Value not found for key: \"")
+                    .append(sceneName)
+                    .append("\" for jsonNode: \n")
+                    .append(jsonNode.toPrettyString())
+                    .append("\n");
             for (var jsonKey: jsonKeys) {
                 errorMessageBuilder.append(".").append(jsonKey);
             }

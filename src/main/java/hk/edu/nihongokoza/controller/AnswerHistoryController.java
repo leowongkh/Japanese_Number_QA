@@ -78,10 +78,10 @@ public class AnswerHistoryController {
     }
 
     private void initializeDisplayText() {
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode,"correctRate", correctRateDisplayLabel);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode,"correctHint", correctHintDisplayLabel);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode,"export_to_csv", exportToCSVButton);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode,"return", returnButton);
+        displayTextService.initializeSingleLabeledDisplayText(ANSWER_HISTORY_SCENE_NAME, correctRateDisplayLabel, CORRECT_RATE_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(ANSWER_HISTORY_SCENE_NAME, correctHintDisplayLabel, CORRECT_HINT_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(ANSWER_HISTORY_SCENE_NAME, exportToCSVButton, EXPORT_TO_CSV_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(ANSWER_HISTORY_SCENE_NAME, returnButton, RETURN_KEY);
 
         displayTextService.initializeSingleTableColumnDisplay(ANSWER_HISTORY_SCENE_NAME, difficultyColumn, DIFFICULTY_COLUMN_KEY);
         displayTextService.initializeSingleTableColumnDisplay(ANSWER_HISTORY_SCENE_NAME, questionColumn,QUESTION_COLUMN_KEY);
