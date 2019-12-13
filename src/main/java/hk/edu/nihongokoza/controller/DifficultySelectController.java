@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static hk.edu.nihongokoza.constant.Difficulties.*;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.DifficultySelectKeys.DIFFICULTY_PROMPT_TEXT_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.DIFFICULTY_SELECT_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.IN_GAME;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.MAIN_MENU;
@@ -83,7 +84,7 @@ public class DifficultySelectController {
     }
 
     private void initializeDisplay() {
-        displayTextService.initializeSingleComboBoxPromptText(jsonNode, "difficulty_prompt", difficultySelectComboBox);
+        displayTextService.initializeSingleComboBoxPromptText(DIFFICULTY_SELECT_SCENE_NAME, difficultySelectComboBox, DIFFICULTY_PROMPT_TEXT_KEY);
         displayTextService.initializeSingleLabeledDisplayText(jsonNode, "title", titleLabel);
         displayTextService.initializeSingleLabeledDisplayText(jsonNode, "number_range", numberRangeDisplayLabel);
         displayTextService.initializeSingleLabeledDisplayText(jsonNode, "number_range_to", numberRangeToDisplayLabel);

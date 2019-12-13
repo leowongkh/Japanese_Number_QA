@@ -26,6 +26,10 @@ public class JSONKeysConstant {
     }
 
     public static class InGameKeys{
-        public static final String INPUT_FIELD_PROMPT_TEXT = "input_text_field_prompt_text";
+        public static final String INPUT_FIELD_PROMPT_TEXT_KEY = "input_text_field_prompt_text";
+    }
+
+    public static class DifficultySelectKeys{
+        public static final String DIFFICULTY_PROMPT_TEXT_KEY = "difficulty_prompt";
     }
 }

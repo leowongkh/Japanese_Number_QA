@@ -67,12 +67,12 @@ public class DisplayTextService {
      *     </ol>
      * </p>
      *
-     * @param jsonNode the root JSON node for finding the text value
-     * @param value the JSON key that leads to the <b>only</b> text value
+     * @param sceneName the root key for finding the text value
      * @param comboBox the combo box / picker whose text is to be set
+     * @param values the order JSON key that leads to the text value
      */
-    public void initializeSingleComboBoxPromptText(JsonNode jsonNode, String value, ComboBoxBase<?> comboBox){
-        var displayText = jsonNode.findValue(value).textValue();
+    public void initializeSingleComboBoxPromptText(String sceneName, ComboBoxBase<?> comboBox, String... values){
+        var displayText = getJSONTextService.getJSONTextValue(sceneName,values);
         if (displayText == null) {
             throw new NullPointerException();
         }
@@ -91,8 +91,8 @@ public class DisplayTextService {
      * </p>
      *
      * @param sceneName the root key for finding the text value
-     * @param values the order JSON key that leads to the text value
      * @param textInputControl the text input control whose text is to be set
+     * @param values the order JSON key that leads to the text value
      */
     public void initializeSingleTextInputControlPromptText(String sceneName, TextInputControl textInputControl, String... values){
         var displayText = getJSONTextService.getJSONTextValue(sceneName, values);

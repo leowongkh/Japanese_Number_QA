@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.*;
-import static hk.edu.nihongokoza.constant.JSONKeysConstant.InGameKeys.INPUT_FIELD_PROMPT_TEXT;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.InGameKeys.INPUT_FIELD_PROMPT_TEXT_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.COMMON_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.IN_GAME_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.MAIN_MENU;
@@ -131,7 +131,7 @@ public class InGameController {
             displayTextService.initializeSingleLabeledDisplayText(displayJsonNode, "next_question", nextQuestionButton);
             displayTextService.initializeSingleLabeledDisplayText(displayJsonNode, "return", returnButton);
 
-            displayTextService.initializeSingleTextInputControlPromptText(IN_GAME_SCENE_NAME, inputTextField, INPUT_FIELD_PROMPT_TEXT);
+            displayTextService.initializeSingleTextInputControlPromptText(IN_GAME_SCENE_NAME, inputTextField, INPUT_FIELD_PROMPT_TEXT_KEY);
 
         } catch (IOException e) {
             e.printStackTrace();
