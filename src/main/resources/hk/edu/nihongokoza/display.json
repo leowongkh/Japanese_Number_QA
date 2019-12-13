@@ -52,7 +52,8 @@
       "number_range_to": "至",
       "start": "開始！",
       "return": "返回",
-      "difficulty_prompt": "難度"
+      "difficulty_prompt": "難度",
+      "unknown_number": "??"
     },
     "in_game": {
       "types": {
