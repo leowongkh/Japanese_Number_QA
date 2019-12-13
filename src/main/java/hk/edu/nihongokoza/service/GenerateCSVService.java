@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 
 import static hk.edu.nihongokoza.constant.FileDialogType.SAVE;
 import static hk.edu.nihongokoza.constant.FileExtensionConstant.CSV_EXTENSION;
-import static hk.edu.nihongokoza.constant.JSONKeysConstant.*;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.CSV_SYMBOL_KEY;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.FILE_SAVE_TITLE_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.COMMON_SCENE_NAME;
 
 public class GenerateCSVService {
@@ -60,9 +61,9 @@ public class GenerateCSVService {
     }
 
     public void createAndSaveCSVFileForAnswerHistory(TableView<AnswerHistoryViewModel> tableView) {
-        var csvDescription = getJSONTextService.getSymbol(COMMON_SCENE_NAME, CSV_SYMBOL_KEY);
+        var csvDescription = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CSV_SYMBOL_KEY);
         var csvExtensionFilter = new FileChooser.ExtensionFilter(csvDescription, CSV_EXTENSION);
-        var dialogTitle = getJSONTextService.getSymbol(COMMON_SCENE_NAME, FILE_SAVE_TITLE_KEY);
+        var dialogTitle = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, FILE_SAVE_TITLE_KEY);
 
         var file = fileIOService.openOrSaveSingleFile(tableView.getScene().getWindow(),
                 SAVE,

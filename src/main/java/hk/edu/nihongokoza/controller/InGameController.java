@@ -167,18 +167,18 @@ public class InGameController {
         alert.initOwner(inputTextField.getScene().getWindow());
         if (result) {
             // display tick
-            resultLabel.setText(getJSONTextService.getSymbol(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY));
+            resultLabel.setText(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY));
             alert.setAlertType(Alert.AlertType.CONFIRMATION);
-            title = getJSONTextService.getSymbol(COMMON_SCENE_NAME,CORRECT_KEY, POP_UP_KEY, TITLE_KEY);
-            contentText = getJSONTextService.getSymbol(COMMON_SCENE_NAME,CORRECT_KEY, POP_UP_KEY, CONTENT_TEXT_KEY);
+            title = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, POP_UP_KEY, TITLE_KEY);
+            contentText = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, POP_UP_KEY, CONTENT_TEXT_KEY);
         } else {
             // display cross
-            resultLabel.setText(getJSONTextService.getSymbol(COMMON_SCENE_NAME, INCORRECT_KEY, SYMBOL_KEY));
+            resultLabel.setText(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, INCORRECT_KEY, SYMBOL_KEY));
             alert.setAlertType(Alert.AlertType.ERROR);
-            title = getJSONTextService.getSymbol(COMMON_SCENE_NAME,INCORRECT_KEY, POP_UP_KEY, TITLE_KEY);
-            StringBuilder contentTextBuilder = new StringBuilder(getJSONTextService.getSymbol(COMMON_SCENE_NAME,INCORRECT_KEY, POP_UP_KEY, CONTENT_TEXT_KEY));
-            contentTextBuilder.append(getJSONTextService.getSymbol(COMMON_SCENE_NAME,PUNCTUATION_KEY,QUOTATION_KEY,OPEN_KEY));
-            switch (currentQuestionAnswerTypePair.getAnswerType()){
+            title = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, INCORRECT_KEY, POP_UP_KEY, TITLE_KEY);
+            StringBuilder contentTextBuilder = new StringBuilder(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, INCORRECT_KEY, POP_UP_KEY, CONTENT_TEXT_KEY));
+            contentTextBuilder.append(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, PUNCTUATION_KEY, QUOTATION_KEY, OPEN_KEY));
+            switch (currentQuestionAnswerTypePair.getAnswerType()) {
                 case KANJI:
                     contentTextBuilder.append(numberWordViewModel.getKanji());
                     break;
@@ -189,8 +189,8 @@ public class InGameController {
                     contentTextBuilder.append(numberWordViewModel.getNumber().toString());
                     break;
             }
-            contentTextBuilder.append(getJSONTextService.getSymbol(COMMON_SCENE_NAME,PUNCTUATION_KEY, QUOTATION_KEY, CLOSE_KEY));
-            contentTextBuilder.append(getJSONTextService.getSymbol(COMMON_SCENE_NAME,INCORRECT_KEY,POP_UP_KEY ,CONTENT_AFTER_TEXT_KEY));
+            contentTextBuilder.append(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, PUNCTUATION_KEY, QUOTATION_KEY, CLOSE_KEY));
+            contentTextBuilder.append(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, INCORRECT_KEY, POP_UP_KEY, CONTENT_AFTER_TEXT_KEY));
             contentText = contentTextBuilder.toString();
         }
         alert.setTitle(title);

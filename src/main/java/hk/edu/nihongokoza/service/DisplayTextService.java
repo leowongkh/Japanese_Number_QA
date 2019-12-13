@@ -95,7 +95,7 @@ public class DisplayTextService {
      * @param textInputControl the text input control whose text is to be set
      */
     public void initializeSingleTextInputControlPromptText(String sceneName, TextInputControl textInputControl, String... values){
-        var displayText = getJSONTextService.getSymbol(sceneName, values);
+        var displayText = getJSONTextService.getJSONTextValue(sceneName, values);
         if (displayText == null){
             throw new NullPointerException();
         }

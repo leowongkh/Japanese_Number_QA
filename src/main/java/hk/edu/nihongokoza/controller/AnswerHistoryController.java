@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-import static hk.edu.nihongokoza.constant.JSONKeysConstant.*;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.CORRECT_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SYMBOL_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.ANSWER_HISTORY_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.COMMON_SCENE_NAME;
@@ -90,7 +90,7 @@ public class AnswerHistoryController {
 
         var correctSymbolText = jsonNode.findValue("correctSymbolRep").textValue();
 
-        var correctSymbol = getJSONTextService.getSymbol(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY);
+        var correctSymbol = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY);
         correctHintDisplayLabel.setText(correctHintDisplayLabel.getText().replace("'" + correctSymbolText + "'", correctSymbol));
     }
 
@@ -122,7 +122,7 @@ public class AnswerHistoryController {
         var percentageFormat = new DecimalFormat("#0.00%");
         percentageFormat.setRoundingMode(RoundingMode.HALF_UP);
 
-        var correctString = getJSONTextService.getSymbol(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY);
+        var correctString = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY);
         if (filteredList.isEmpty()) {
             label.setText(" -.--% ");
         } else {

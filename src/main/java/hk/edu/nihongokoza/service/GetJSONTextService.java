@@ -2,8 +2,6 @@ package hk.edu.nihongokoza.service;
 
 import java.io.IOException;
 
-import static hk.edu.nihongokoza.constant.JSONKeysConstant.*;
-
 public class GetJSONTextService {
     private static GetJSONTextService instance;
 
@@ -25,21 +23,20 @@ public class GetJSONTextService {
     }
 
     /**
-     *
      * @param sceneName name of the root scene for json
-     * @param jsonKeys <i>Required</i> key values for JSON to get the value, in path order.
+     * @param jsonKeys  <i>Required</i> key values for JSON to get the value, in path order.
      * @return The value obtained if the order key values can lead to a text JSON Node.
      * @throws NullPointerException if the value cannot be obtained
      */
-    public String getSymbol(final String sceneName, final String... jsonKeys) {
+    public String getJSONTextValue(final String sceneName, final String... jsonKeys) {
         try {
             var jsonNode = jsonService.getJSONNode(sceneName);
-            for (var jsonKey: jsonKeys) {
-                if (jsonNode.isTextual()){
+            for (var jsonKey : jsonKeys) {
+                if (jsonNode.isTextual()) {
                     return jsonNode.textValue();
                 }
                 jsonNode = jsonNode.findValue(jsonKey);
-                if (jsonNode.isTextual()){
+                if (jsonNode.isTextual()) {
                     return jsonNode.textValue();
                 }
             }
