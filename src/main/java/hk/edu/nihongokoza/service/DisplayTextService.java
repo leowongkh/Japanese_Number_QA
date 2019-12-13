@@ -44,12 +44,12 @@ public class DisplayTextService {
      *     </ol>
      * </p>
      *
-     * @param jsonNode the root JSON node for finding the text value
-     * @param value the JSON key that leads to the <b>only</b> text value
+     * @param sceneName the root JSON node for finding the text value
      * @param tableColumn the column whose text is to be set
+     * @param values the JSON key that leads to the <b>only</b> text value
      */
-    public void initializeSingleTableColumnDisplay(JsonNode jsonNode, String value, TableColumnBase<?, ?> tableColumn) {
-        var displayText = jsonNode.findValue(value).textValue();
+    public void initializeSingleTableColumnDisplay(String sceneName, TableColumnBase<?, ?> tableColumn, String... values) {
+        var displayText = getJSONTextService.getJSONTextValue(sceneName,values);
         if (displayText == null) {
             throw new NullPointerException();
         }

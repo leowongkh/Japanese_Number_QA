@@ -22,6 +22,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.AnswerHistoryKeys.*;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.CORRECT_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SYMBOL_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.ANSWER_HISTORY_SCENE_NAME;
@@ -82,11 +83,11 @@ public class AnswerHistoryController {
         displayTextService.initializeSingleLabeledDisplayText(jsonNode,"export_to_csv", exportToCSVButton);
         displayTextService.initializeSingleLabeledDisplayText(jsonNode,"return", returnButton);
 
-        displayTextService.initializeSingleTableColumnDisplay(jsonNode,"difficulty", difficultyColumn);
-        displayTextService.initializeSingleTableColumnDisplay(jsonNode,"question", questionColumn);
-        displayTextService.initializeSingleTableColumnDisplay(jsonNode,"question_type", questionTypeColumn);
-        displayTextService.initializeSingleTableColumnDisplay(jsonNode,"correct_answer", correctAnswerColumn);
-        displayTextService.initializeSingleTableColumnDisplay(jsonNode,"your_answer", yourAnswerColumn);
+        displayTextService.initializeSingleTableColumnDisplay(ANSWER_HISTORY_SCENE_NAME, difficultyColumn, DIFFICULTY_COLUMN_KEY);
+        displayTextService.initializeSingleTableColumnDisplay(ANSWER_HISTORY_SCENE_NAME, questionColumn,QUESTION_COLUMN_KEY);
+        displayTextService.initializeSingleTableColumnDisplay(ANSWER_HISTORY_SCENE_NAME, questionTypeColumn,QUESTION_TYPE_COLUMN_KEY);
+        displayTextService.initializeSingleTableColumnDisplay(ANSWER_HISTORY_SCENE_NAME, correctAnswerColumn,CORRECT_ANSWER_COLUMN_KEY);
+        displayTextService.initializeSingleTableColumnDisplay(ANSWER_HISTORY_SCENE_NAME, yourAnswerColumn,YOUR_ANSWER_COLUMN_KEY);
 
         var correctSymbolText = jsonNode.findValue("correctSymbolRep").textValue();
 

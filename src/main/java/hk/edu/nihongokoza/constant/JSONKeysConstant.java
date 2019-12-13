@@ -32,4 +32,12 @@ public class JSONKeysConstant {
     public static class DifficultySelectKeys{
         public static final String DIFFICULTY_PROMPT_TEXT_KEY = "difficulty_prompt";
     }
+
+    public static class AnswerHistoryKeys{
+        public static final String DIFFICULTY_COLUMN_KEY = "difficulty";
+        public static final String QUESTION_COLUMN_KEY = "question";
+        public static final String QUESTION_TYPE_COLUMN_KEY = "question_type";
+        public static final String CORRECT_ANSWER_COLUMN_KEY = "correct_answer";
+        public static final String YOUR_ANSWER_COLUMN_KEY = "your_answer";
+    }
 }
