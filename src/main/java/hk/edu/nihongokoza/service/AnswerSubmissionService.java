@@ -7,7 +7,8 @@ import hk.edu.nihongokoza.viewmodel.NumberWordViewModel;
 
 import java.io.IOException;
 
-import static hk.edu.nihongokoza.constant.JSONKeysConstant.*;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.CORRECT_KEY;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.SYMBOL_KEY;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.COMMON_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.IN_GAME_SCENE_NAME;
 import static hk.edu.nihongokoza.datahold.DataHolder.ANSWERS;
@@ -88,7 +89,7 @@ public class AnswerSubmissionService {
         }
         boolean correct = checkAnswer(answer, question, questionAnswerTypePair.getAnswerType());
         if (correct){
-            answerHistoryViewModel.setYourAnswer(getJSONTextService.getSymbol(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY));
+            answerHistoryViewModel.setYourAnswer(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY));
         }else{
             answerHistoryViewModel.setYourAnswer(answer);
         }
