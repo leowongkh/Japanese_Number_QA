@@ -1,11 +1,9 @@
 package hk.edu.nihongokoza.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import hk.edu.nihongokoza.App;
 import hk.edu.nihongokoza.constant.Difficulties;
 import hk.edu.nihongokoza.service.DifficultyService;
 import hk.edu.nihongokoza.service.DisplayTextService;
-import hk.edu.nihongokoza.service.JSONService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +20,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static hk.edu.nihongokoza.constant.Difficulties.*;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.DifficultySelectKeys.*;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.DIFFICULTY_SELECT_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.IN_GAME;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.MAIN_MENU;
@@ -30,7 +29,6 @@ public class DifficultySelectController {
 
     private static final ArrayList<Difficulties> DIFFICULTIES_LIST = new ArrayList<>(List.of(EASY, MEDIUM, HARD, EXPERT));
     private static final ObservableList<Difficulties> DIFFICULTIES_OBSERVABLE_LIST = FXCollections.observableArrayList(DIFFICULTIES_LIST);
-    private JsonNode jsonNode = JSONService.getInstance().getJSONNode(DIFFICULTY_SELECT_SCENE_NAME);
     private DisplayTextService displayTextService = DisplayTextService.getInstance();
     private DifficultyService difficultyService = DifficultyService.getInstance();
     @FXML
@@ -54,7 +52,7 @@ public class DifficultySelectController {
     @FXML
     private ComboBox<Difficulties> difficultySelectComboBox;
 
-    public DifficultySelectController() throws IOException {
+    public DifficultySelectController() {
     }
 
     private void initializeComboBox() {
@@ -83,13 +81,13 @@ public class DifficultySelectController {
     }
 
     private void initializeDisplay() {
-        displayTextService.initializeSingleComboBoxPromptText(jsonNode, "difficulty_prompt", difficultySelectComboBox);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "title", titleLabel);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "number_range", numberRangeDisplayLabel);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "number_range_to", numberRangeToDisplayLabel);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "unknown_number", maxBoundLabel);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "start", startButton);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "return", returnButton);
+        displayTextService.initializeSingleComboBoxPromptText(DIFFICULTY_SELECT_SCENE_NAME, difficultySelectComboBox, DIFFICULTY_PROMPT_TEXT_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(DIFFICULTY_SELECT_SCENE_NAME, titleLabel, TITLE_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(DIFFICULTY_SELECT_SCENE_NAME, numberRangeDisplayLabel, NUMBER_RANGE_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(DIFFICULTY_SELECT_SCENE_NAME,  numberRangeToDisplayLabel, NUMBER_RANGE_TO_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(DIFFICULTY_SELECT_SCENE_NAME, maxBoundLabel, UNKNOWN_NUMBER_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(DIFFICULTY_SELECT_SCENE_NAME, startButton, START_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(DIFFICULTY_SELECT_SCENE_NAME, returnButton, RETURN_KEY);
     }
 
     @FXML

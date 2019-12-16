@@ -1,9 +1,7 @@
 package hk.edu.nihongokoza.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import hk.edu.nihongokoza.App;
 import hk.edu.nihongokoza.service.DisplayTextService;
-import hk.edu.nihongokoza.service.JSONService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -12,13 +10,12 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.MainMenuKeys.*;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.MAIN_MENU_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.ANSWER_HISTORY;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.DIFFICULTY_SELECT;
 
 public class MainMenuController {
-
-    private JsonNode jsonNode = JSONService.getInstance().getJSONNode(MAIN_MENU_SCENE_NAME);
 
     private DisplayTextService displayTextService = DisplayTextService.getInstance();
 
@@ -34,14 +31,14 @@ public class MainMenuController {
     @FXML
     private Button exitButton;
 
-    public MainMenuController() throws IOException {
+    public MainMenuController() {
     }
 
     private void initializeDisplay() {
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "title", titleLabel);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "startGame", startButton);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "answerHistory", answerHistoryButton);
-        displayTextService.initializeSingleLabeledDisplayText(jsonNode, "exit", exitButton);
+        displayTextService.initializeSingleLabeledDisplayText(MAIN_MENU_SCENE_NAME, titleLabel, TITLE_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(MAIN_MENU_SCENE_NAME, startButton, START_GAME_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(MAIN_MENU_SCENE_NAME,  answerHistoryButton, ANSWER_HISTORY_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(MAIN_MENU_SCENE_NAME, exitButton, EXIT_KEY);
     }
 
     @FXML

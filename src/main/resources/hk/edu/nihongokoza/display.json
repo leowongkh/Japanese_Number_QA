@@ -25,7 +25,12 @@
         "end_of_sentence": "。"
       },
       "csv": "CSV檔",
-      "file_save_title": "儲存檔案"
+      "file_save_title": "儲存檔案",
+      "types": {
+        "kanji": "漢字",
+        "hiragana": "平假名",
+        "number": "數字"
+      }
     },
     "answer_history": {
       "title": "答題記錄",
@@ -56,11 +61,6 @@
       "unknown_number": "??"
     },
     "in_game": {
-      "types": {
-        "kanji": "漢字",
-        "hiragana": "平假名",
-        "number": "數字"
-      },
       "pre_question_type_display": "請為下列",
       "post_question_type_display": "",
       "pre_answer_type_display": "輸入",
