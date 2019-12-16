@@ -14,13 +14,12 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.*;
-import static hk.edu.nihongokoza.constant.JSONKeysConstant.InGameKeys.INPUT_FIELD_PROMPT_TEXT;
+import static hk.edu.nihongokoza.constant.JSONKeysConstant.InGameKeys.*;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.COMMON_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.JSONKeysConstant.SceneName.IN_GAME_SCENE_NAME;
 import static hk.edu.nihongokoza.constant.SceneNameConstant.MAIN_MENU;
 
 public class InGameController {
-    private JSONService jsonService = JSONService.getInstance();
 
     private DisplayTextService displayTextService = DisplayTextService.getInstance();
 
@@ -63,57 +62,54 @@ public class InGameController {
 
     private void initDisplayForSingleQuestion() {
         if (currentQuestionAnswerTypePair != null && numberWordViewModel != null) {
-            try {
-                var questionTypeJsonNode = jsonService.getJSONNode("in_game").findValue("types");
-                switch (currentQuestionAnswerTypePair.getQuestionType()) {
-                    case KANJI:
-                        displayTextService.initializeSingleLabeledDisplayText(questionTypeJsonNode, "kanji", questionsTypeDisplayLabel);
-                        break;
-                    case HIRAGANA:
-                        displayTextService.initializeSingleLabeledDisplayText(questionTypeJsonNode, "hiragana", questionsTypeDisplayLabel);
-                        break;
-                    case NUMBER:
-                        displayTextService.initializeSingleLabeledDisplayText(questionTypeJsonNode, "number", questionsTypeDisplayLabel);
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + currentQuestionAnswerTypePair.getQuestionType());
-                }
-
-                switch (currentQuestionAnswerTypePair.getAnswerType()) {
-                    case KANJI:
-                        displayTextService.initializeSingleLabeledDisplayText(questionTypeJsonNode, "kanji", answerTypeDisplayLabel);
-                        break;
-                    case HIRAGANA:
-                        displayTextService.initializeSingleLabeledDisplayText(questionTypeJsonNode, "hiragana", answerTypeDisplayLabel);
-                        break;
-                    case NUMBER:
-                        displayTextService.initializeSingleLabeledDisplayText(questionTypeJsonNode, "number", answerTypeDisplayLabel);
-                        break;
-
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + currentQuestionAnswerTypePair.getAnswerType());
-                }
-
-                var questionText = "";
-                switch (currentQuestionAnswerTypePair.getQuestionType()) {
-                    case KANJI:
-                        questionText = numberWordViewModel.getKanji();
-                        break;
-                    case HIRAGANA:
-                        questionText = numberWordViewModel.getHiragana();
-                        break;
-                    case NUMBER:
-                        questionText = numberWordViewModel.getNumber().toString();
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + currentQuestionAnswerTypePair.getQuestionType());
-                }
-
-                questionDisplayLabel.setText(questionText);
-
-            } catch (IOException e) {
-                e.printStackTrace();
+            switch (currentQuestionAnswerTypePair.getQuestionType()) {
+                case KANJI:
+                    displayTextService.initializeSingleLabeledDisplayText(COMMON_SCENE_NAME, questionsTypeDisplayLabel, TYPES_KEY, KANJI_KEY);
+                    break;
+                case HIRAGANA:
+                    displayTextService.initializeSingleLabeledDisplayText(COMMON_SCENE_NAME, questionsTypeDisplayLabel, TYPES_KEY, HIRAGANA_KEY);
+                    break;
+                case NUMBER:
+                    displayTextService.initializeSingleLabeledDisplayText(COMMON_SCENE_NAME, questionsTypeDisplayLabel, TYPES_KEY, NUMBER_KEY);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + currentQuestionAnswerTypePair.getQuestionType());
             }
+
+            switch (currentQuestionAnswerTypePair.getAnswerType()) {
+                case KANJI:
+                    displayTextService.initializeSingleLabeledDisplayText(COMMON_SCENE_NAME, answerTypeDisplayLabel, TYPES_KEY, KANJI_KEY);
+                    break;
+                case HIRAGANA:
+                    displayTextService.initializeSingleLabeledDisplayText(COMMON_SCENE_NAME, answerTypeDisplayLabel, TYPES_KEY, HIRAGANA_KEY);
+                    break;
+                case NUMBER:
+                    displayTextService.initializeSingleLabeledDisplayText(COMMON_SCENE_NAME, answerTypeDisplayLabel, TYPES_KEY, NUMBER_KEY);
+                    break;
+
+                default:
+                    throw new IllegalStateException("Unexpected value: " + currentQuestionAnswerTypePair.getAnswerType());
+            }
+
+            var questionText = "";
+            switch (currentQuestionAnswerTypePair.getQuestionType()) {
+                case KANJI:
+                    questionText = numberWordViewModel.getKanji();
+                    break;
+                case HIRAGANA:
+                    questionText = numberWordViewModel.getHiragana();
+                    break;
+                case NUMBER:
+                    questionText = numberWordViewModel.getNumber().toString();
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + currentQuestionAnswerTypePair.getQuestionType());
+            }
+
+            questionDisplayLabel.setText(questionText);
+
+            inputTextField.setText("");
+
         } else if (currentQuestionAnswerTypePair == null) {
             throw new NullPointerException("ERROR: currentQuestionAnswerTypePair is null!");
         } else {
@@ -122,20 +118,14 @@ public class InGameController {
     }
 
     private void initializeDisplay() {
-        try {
-            var displayJsonNode = jsonService.getJSONNode(IN_GAME_SCENE_NAME);
 
-            displayTextService.initializeSingleLabeledDisplayText(displayJsonNode, "pre_question_type_display", forTheFollowingDisplayLabel);
-            displayTextService.initializeSingleLabeledDisplayText(displayJsonNode, "pre_answer_type_display", enterDisplayLabel);
-            displayTextService.initializeSingleLabeledDisplayText(displayJsonNode, "submit", submitButton);
-            displayTextService.initializeSingleLabeledDisplayText(displayJsonNode, "next_question", nextQuestionButton);
-            displayTextService.initializeSingleLabeledDisplayText(displayJsonNode, "return", returnButton);
+        displayTextService.initializeSingleLabeledDisplayText(IN_GAME_SCENE_NAME, forTheFollowingDisplayLabel, PRE_QUESTION_TYPE_DISPLAY_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(IN_GAME_SCENE_NAME, enterDisplayLabel, PRE_ANSWER_TYPE_DISPLAY_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(IN_GAME_SCENE_NAME, submitButton, SUBMIT_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(IN_GAME_SCENE_NAME, nextQuestionButton, NEXT_QUESTION_KEY);
+        displayTextService.initializeSingleLabeledDisplayText(IN_GAME_SCENE_NAME, returnButton, RETURN_KEY);
 
-            displayTextService.initializeSingleTextInputControlPromptText(IN_GAME_SCENE_NAME, inputTextField, INPUT_FIELD_PROMPT_TEXT);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        displayTextService.initializeSingleTextInputControlPromptText(IN_GAME_SCENE_NAME, inputTextField, INPUT_FIELD_PROMPT_TEXT_KEY);
 
     }
 
@@ -168,7 +158,7 @@ public class InGameController {
         if (result) {
             // display tick
             resultLabel.setText(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY));
-            alert.setAlertType(Alert.AlertType.CONFIRMATION);
+            alert.setAlertType(Alert.AlertType.INFORMATION);
             title = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, POP_UP_KEY, TITLE_KEY);
             contentText = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, POP_UP_KEY, CONTENT_TEXT_KEY);
         } else {
@@ -194,9 +184,11 @@ public class InGameController {
             contentText = contentTextBuilder.toString();
         }
         alert.setTitle(title);
+        alert.setHeaderText("");
         alert.setContentText(contentText);
         submitButton.setDisable(true);
         nextQuestionButton.setDisable(false);
+        alert.showAndWait();
     }
 
     @FXML
