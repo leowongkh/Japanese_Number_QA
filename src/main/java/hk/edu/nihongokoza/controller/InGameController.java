@@ -108,6 +108,8 @@ public class InGameController {
 
             questionDisplayLabel.setText(questionText);
 
+            inputTextField.setText("");
+
         } else if (currentQuestionAnswerTypePair == null) {
             throw new NullPointerException("ERROR: currentQuestionAnswerTypePair is null!");
         } else {
@@ -156,7 +158,7 @@ public class InGameController {
         if (result) {
             // display tick
             resultLabel.setText(getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, SYMBOL_KEY));
-            alert.setAlertType(Alert.AlertType.CONFIRMATION);
+            alert.setAlertType(Alert.AlertType.INFORMATION);
             title = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, POP_UP_KEY, TITLE_KEY);
             contentText = getJSONTextService.getJSONTextValue(COMMON_SCENE_NAME, CORRECT_KEY, POP_UP_KEY, CONTENT_TEXT_KEY);
         } else {
@@ -182,9 +184,11 @@ public class InGameController {
             contentText = contentTextBuilder.toString();
         }
         alert.setTitle(title);
+        alert.setHeaderText("");
         alert.setContentText(contentText);
         submitButton.setDisable(true);
         nextQuestionButton.setDisable(false);
+        alert.showAndWait();
     }
 
     @FXML
